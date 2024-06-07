@@ -1,0 +1,740 @@
+/* | IMPORTS */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+
+/* | CSS RESET  */
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	line-height: 1.5;
+}
+
+/* | UTILITY CLASSES */
+img {
+	display: block;
+	height: auto;
+}
+
+.no-wrap {
+	white-space: nowrap;
+}
+
+li {
+	list-style-type: none;
+}
+
+.cp {
+	cursor: pointer;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* | VARIABLES */
+:root {
+	/* | COLORS  */
+	--scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+	--scissors: hsl(40, 84%, 53%);
+	--paper-gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+	--paper: hsl(230, 89%, 65%);
+	--rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+	--rock: hsl(349, 70%, 56%);
+	--lizard-gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+	--lizard: hsl(261, 72%, 63%);
+	--spock-gradient: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+	--spock: hsl(189, 58%, 57%);
+	--dark-text: hsl(229, 25%, 31%);
+	--score-text: hsl(229, 64%, 46%);
+	--header-outline: hsl(217, 16%, 45%);
+	--radial-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+	--radial: hsl(238, 48%, 15%);
+	--radial-op: hsla(238, 48%, 15%, 0.5);
+	--white: hsl(0, 0%, 100%);
+
+	/* | FONTS  */
+	--p-font: 600 18px 'Barlow Semi Condensed';
+	--h2-font: 700 32px 'Barlow Semi Condensed';
+	--h1-font: 700 60px 'Barlow Semi Condensed';
+}
+
+/* | GENERAL STYLES */
+html,
+body {
+	width: 100%;
+	height: 800px;
+	font: var(--p-font);
+}
+
+body {
+	padding: 45px;
+	text-transform: uppercase;
+	background: radial-gradient(var(--radial-gradient));
+	display: flex;
+	flex-flow: column;
+	justify-content: start;
+	align-items: center;
+	gap: 156px;
+	position: relative;
+}
+
+header {
+	width: 705px;
+	height: 156px;
+	padding: 16px 24px;
+	border: 4px solid var(--header-outline);
+	border-radius: 16px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header img[alt='RPS Logo'] {
+	width: 156px;
+}
+
+header img[alt='RPSLS Logo'] {
+	width: 110px;
+}
+
+.score {
+	width: 150px;
+	height: 100%;
+	padding: 20px;
+	border-radius: 8px;
+	background-color: var(--white);
+	color: var(--score-text);
+	display: flex;
+	flex-flow: column;
+	justify-content: start;
+	align-items: center;
+}
+
+h1 {
+	font: var(--h1-font);
+	color: var(--dark-text);
+}
+
+main {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.reset-area {
+	width: 280px;
+	display: none;
+	position: relative;
+}
+
+.reset-area.bonus {
+	width: 330px;
+	margin-top: -36px;
+}
+
+.img-plate {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	position: absolute;
+}
+
+.img-plate.bonus {
+	width: 145px;
+	height: 145px;
+}
+
+.img-plate.rock {
+	background: linear-gradient(to top, var(--rock-gradient));
+	box-shadow: 0 4px 0 0 var(--rock);
+	bottom: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.bonus.rock {
+	bottom: -60px;
+	left: auto;
+	right: 0;
+	transform: translate(0);
+}
+
+.rock img {
+	width: 65px;
+}
+
+.bonus.rock img {
+	width: 48px;
+}
+
+.img-plate.paper {
+	background: linear-gradient(to top, var(--paper-gradient));
+	box-shadow: 0 4px 0 0 var(--paper);
+	top: -100px;
+	left: -100px;
+}
+
+.bonus.paper {
+	top: 40px;
+	left: auto;
+	right: -60px;
+}
+
+.paper img {
+	width: 66px;
+}
+
+.bonus.paper img {
+	width: 50px;
+}
+
+.img-plate.scissors {
+	background: linear-gradient(to top, var(--scissors-gradient));
+	box-shadow: 0 4px 0 0 var(--scissors);
+	top: -100px;
+	right: -100px;
+}
+
+.bonus.scissors {
+	top: -72px;
+	left: auto;
+	right: 50%;
+	transform: translateX(50%);
+}
+
+.scissors img {
+	width: 70px;
+}
+
+.bonus.scissors img {
+	width: 52px;
+}
+
+.img-plate.lizard {
+	background: linear-gradient(to top, var(--lizard-gradient));
+	box-shadow: 0 4px 0 0 var(--lizard);
+	bottom: -60px;
+	left: 0;
+}
+
+.lizard img {
+	width: 63px;
+}
+
+.img-plate.spock {
+	background: linear-gradient(to top, var(--spock-gradient));
+	box-shadow: 0 4px 0 0 var(--spock);
+	top: 40px;
+	left: -60px;
+}
+
+.spock img {
+	width: 44px;
+}
+
+.img {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background-color: var(--white);
+	box-shadow: 0 -4px 0 0 var(--header-outline);
+}
+
+.bonus .img {
+	width: 110px;
+	height: 110px;
+}
+
+img:is([alt='Triangle Bg Image'], [alt='Pentagon Bg Image']) {
+	width: 100%;
+	height: auto;
+}
+
+.play-area {
+	margin-top: 45px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	gap: 100px;
+	position: relative;
+}
+
+.img-area {
+	width: 230px;
+	height: 230px;
+	border-radius: 50%;
+	background-color: var(--radial);
+	display: grid;
+	place-content: center;
+}
+
+.img-area,
+.img-area :is(.img-plate, .img) {
+	position: relative;
+	z-index: 3;
+}
+
+li.won :is(.img-area, .img-plate, .img)::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	z-index: -3;
+	background: var(--radial);
+	opacity: 0;
+	animation: won-anim 2s infinite forwards ease-in-out;
+	position: absolute;
+}
+
+li.won .img-plate::before {
+	width: 126%;
+	height: 126%;
+	z-index: -3;
+}
+
+li.won .img::before {
+	width: 75%;
+	height: 75%;
+	z-index: -3;
+}
+
+@keyframes won-anim {
+	0% {
+		opacity: 0.2;
+		transform: scale(1.5);
+	}
+	50% {
+		opacity: 0.5;
+		transform: scale(2.5);
+	}
+	100% {
+		opacity: 0.2;
+		transform: scale(1.5);
+	}
+}
+
+.img-area .img-plate {
+	width: 290px;
+	height: 290px;
+	position: static;
+	z-index: 3;
+}
+
+.img-area .img-plate:is(.rock, .scissors) {
+	transform: translateX(0);
+}
+
+.img-area .img {
+	width: 225px;
+	height: 225px;
+	z-index: 3;
+}
+
+.img-area .img img {
+	width: 100px;
+}
+
+.img-area .lizard .img img {
+	width: 120px;
+}
+
+.play-area li {
+	color: var(--white);
+	display: flex;
+	position: relative;
+}
+
+.play-area li:not(:nth-child(2)) p {
+	position: absolute;
+	top: -100px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.result-display {
+	display: none;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+}
+
+.play-area h1 {
+	color: var(--white);
+}
+
+.play-area p.btn {
+	width: 220px;
+	height: 48px;
+	border-radius: 8px;
+	background-color: var(--white);
+	color: var(--radial);
+}
+
+.play-area p.btn:hover {
+	color: var(--rock);
+}
+
+footer {
+	padding: 32px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+}
+
+footer * {
+	width: 130px;
+	height: 42px;
+	border: 2px solid var(--white);
+	border-radius: 8px;
+	text-decoration: none;
+	color: var(--white);
+}
+
+.rules {
+	width: 100%;
+	height: 100%;
+	background: var(--radial-op);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.rules-main {
+	width: 400px;
+	padding: 38px 32px;
+	border-radius: 8px;
+	background-color: var(--white);
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+	opacity: 1;
+}
+
+.rules-head {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h2 {
+	font: var(--h2-font);
+	color: var(--dark-text);
+}
+
+img[alt='Close Icon'] {
+	width: 20px;
+}
+
+img[alt='Rules Image'].original {
+	width: 304px;
+}
+
+img[alt='Rules Image'].bonus {
+	width: 340px;
+}
+
+@media screen and (max-width: 900px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--p-font: 600 18px 'Barlow Semi Condensed';
+		--h2-font: 700 32px 'Barlow Semi Condensed';
+		--h1-font: 700 40px 'Barlow Semi Condensed';
+	}
+
+	/* | GENERAL STYLES */
+	.play-area {
+		gap: 30px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--score-font: 600 0.7em 'Barlow Semi Condensed';
+		--p-font: 600 36px 'Barlow Semi Condensed';
+		--h2-font: 700 1.8em 'Barlow Semi Condensed';
+		--h1-font: 700 2.2em 'Barlow Semi Condensed';
+	}
+
+	/* | GENERAL STYLES */
+	html,
+	body {
+		height: 41.7em;
+	}
+
+	body {
+		padding: 1.7em 1.8em 3.1em;
+		gap: 8.9em;
+	}
+
+	header {
+		width: 100%;
+		height: 5.6em;
+		padding: 0.6em;
+		border-radius: 0.4em;
+	}
+
+	header img[alt='RPS Logo'] {
+		margin-left: 0.6em;
+		width: 4.6em;
+	}
+
+	header img[alt='RPSLS Logo'] {
+		margin-left: 0.6em;
+		width: 2.8em;
+	}
+
+	.score {
+		width: 6.7em;
+		padding: 0.7em;
+		border-radius: 0.3em;
+		font: var(--score-font);
+	}
+
+	.reset-area {
+		width: 10em;
+	}
+
+	.reset-area.bonus {
+		width: 12.2em;
+		margin-top: -2.2em;
+	}
+
+	.img-plate {
+		width: 7.2em;
+		height: 7.2em;
+	}
+
+	.img-plate.bonus {
+		width: 5.3em;
+		height: 5.3em;
+	}
+
+	.img-plate.rock {
+		box-shadow: 0 0.2em 0 0 var(--rock);
+		bottom: -3.6em;
+		transform: translate(-50%);
+	}
+
+	.bonus.rock {
+		bottom: -2em;
+		right: 0;
+		transform: translate(0);
+	}
+
+	.rock img {
+		width: 2.4em;
+	}
+
+	.bonus.rock img {
+		width: 1.8em;
+	}
+
+	.img-plate.paper {
+		box-shadow: 0 0.2em 0 0 var(--paper);
+		top: -3.6em;
+		left: -3.6em;
+	}
+
+	.bonus.paper {
+		top: 1.7em;
+		left: auto;
+		right: -2em;
+	}
+
+	.paper img {
+		width: 2.4em;
+	}
+
+	.bonus.paper img {
+		width: 1.8em;
+	}
+
+	.img-plate.scissors {
+		box-shadow: 0 0.2em 0 0 var(--scissors);
+		top: -3.6em;
+		right: -3.6em;
+	}
+
+	.bonus.scissors {
+		top: -2.3em;
+		right: 50%;
+	}
+
+	.scissors img {
+		width: 2.6em;
+	}
+
+	.bonus.scissors img {
+		width: 1.9em;
+	}
+
+	.img-plate.lizard {
+		box-shadow: 0 0.2em 0 0 var(--lizard);
+		bottom: -2em;
+	}
+
+	.lizard img {
+		width: 2.3em;
+	}
+
+	.img-plate.spock {
+		box-shadow: 0 0.2em 0 0 var(--spock);
+		top: 2.2em;
+		left: -2em;
+	}
+
+	.spock img {
+		width: 1.7em;
+	}
+
+	.img {
+		width: 5.6em;
+		height: 5.6em;
+		box-shadow: 0 -0.2em 0 0 var(--header-outline);
+	}
+
+	.bonus .img {
+		width: 4.1em;
+		height: 4.1em;
+	}
+
+	.play-area {
+		margin-top: -2.8em;
+		flex-flow: row wrap;
+		gap: 2.6em;
+	}
+
+	.img-area {
+		width: 6.1em;
+		height: 6.1em;
+	}
+
+	.img-area .img-plate {
+		width: 7.2em;
+		height: 7.2em;
+	}
+
+	.img-area .img {
+		width: 5.6em;
+		height: 5.6em;
+	}
+
+	.img-area .img img {
+		width: 2.3em;
+	}
+
+	.img-area .lizard .img img {
+		width: 3.1em;
+	}
+
+	.play-area li:nth-child(2) {
+		min-width: 11em;
+		order: 1;
+	}
+
+	.result-display {
+		margin-top: 4em;
+	}
+
+	.play-area li:not(:nth-child(2)) p {
+		font: var(--score-font);
+		top: auto;
+		bottom: -4.2em;
+	}
+
+	.play-area p.btn {
+		width: 12.2em;
+		height: 2.7em;
+		border-radius: 0.4em;
+	}
+
+	footer {
+		padding: 1.1em;
+		flex-flow: column;
+		justify-content: center;
+		gap: 0.9em;
+	}
+
+	footer * {
+		width: 7.2em;
+		height: 2.3em;
+		border: 0.1em solid var(--white);
+		border-radius: 0.4em;
+	}
+
+	/* || RULES STYLES  */
+
+	.rules-main {
+		width: 100%;
+		height: 100%;
+		padding: 4.4em 1.8em;
+		border-radius: 0.4em;
+		justify-content: start;
+		gap: 5.3em;
+		position: relative;
+	}
+
+	.rules-head {
+		justify-content: center;
+	}
+
+	img[alt='Close Icon'] {
+		width: 1.1em;
+		position: absolute;
+		bottom: 3.6em;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	img[alt='Rules Image'].original {
+		width: 16.9em;
+	}
+
+	img[alt='Rules Image'].bonus {
+		width: 17.2em;
+	}
+}
+
+@media screen and (max-width: 665px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--p-font: 600 24px 'Barlow Semi Condensed';
+	}
+}
+
+@media screen and (max-width: 450px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--p-font: 600 20px 'Barlow Semi Condensed';
+	}
+}
+
+@media screen and (max-width: 375px) {
+	/* | VARIABLES */
+	:root {
+		/* | FONTS  */
+		--p-font: 600 18px 'Barlow Semi Condensed';
+	}
+}
+
+.show {
+	display: flex;
+}
